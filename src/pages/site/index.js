@@ -5,7 +5,10 @@ export default function Site() {
         <div>
             <a href="/pedidos">Pedidos</a>
             <br /><br />
+            <a href="/cardapio">Cardapio</a>
+            <br/><br/>
             <a href="/login">Acesso a Sistemas</a>
+            <br/><br/>
         </div>
     )
 }

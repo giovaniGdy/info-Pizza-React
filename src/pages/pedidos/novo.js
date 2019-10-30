@@ -64,7 +64,7 @@ export default class novoPedido extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/"> Home </Link>
+        <Link to="/pedidos"> ↩ Voltar </Link>
         <form onSubmit={this.handleSubmit}>
           <div>
             Nome:

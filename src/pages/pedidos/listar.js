@@ -28,8 +28,9 @@ export default class Pedidos extends React.Component {
   }
 
   render() {
-    return (
+    return (      
       <body class="container">
+        <Link to="/"> Home </Link>
         <h2 class="basic-title text-center">Pedidos Feitos</h2>
         <div>
           <table class="table table-bordered">

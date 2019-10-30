@@ -30,7 +30,7 @@ export default class info extends React.Component {
 
   handlePedidoDelete = event => {
     axios.delete(`http://localhost:8081/pedidos/${this.props.match.params.id}`).then(res => {
-        if (res.data === "Pedido Deletado") {
+        if (res.data === "S") {
             alert("Pedido Deletado Com Sucesso!")
             this.props.history.push('/pedidos')
         }  else {
@@ -73,7 +73,7 @@ export default class info extends React.Component {
     const pedido = this.state;
     return (
       <div>
-        <Link to="/pedidos"> Home </Link>
+        <Link to="/pedidos"> ↩ Voltar </Link>
         <form onSubmit={this.handleSubmit}>
           <div>
             Nome:
