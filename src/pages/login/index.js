@@ -37,7 +37,7 @@ export default class LoginScreen extends React.Component {
         localStorage.setItem("info-Pizza-token-for-login", "THIS_USER_IS_PERMITED");
         localStorage.setItem("info-Pizza-userName-for-login", res.data[1]);
         localStorage.setItem("info-Pizza-senha-for-login", res.data[2]);
-        this.props.history.push('/')
+        this.props.history.push('/dashboard-manager')
       } else {
         alert("Credenciais Inválidas");
         localStorage.clear()

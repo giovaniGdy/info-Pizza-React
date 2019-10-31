@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
+
+import Auth from "../../components/Auth/auth";
+
+import "../styles/pedidos/listagem.css";
+
+import InfoPizzaAdminDashboard from "../dashboard";
 
 export default class Pedidos extends React.Component {
   state = {
@@ -9,30 +14,28 @@ export default class Pedidos extends React.Component {
   };
 
   async componentDidMount() {
+    const r = await Auth();
+    console.log(r);
+    if (r === true) {
+      this.carregar();
+    } else {
+      this.props.history.push("/");
+    }
+  }
+
+  async carregar() {
     await axios.get(`http://localhost:8081/pedidos`).then(res => {
       const pedidos = res.data;
       this.setState({ pedidos });
     });
-    this.confirmIsLoged();
-  }
-
-  async confirmIsLoged() {
-    const loginToken = localStorage.getItem('info-Pizza-token-for-login');
-    const loginUser = localStorage.getItem('info-Pizza-userName-for-login');
-    const loginPass = localStorage.getItem('info-Pizza-senha-for-login');
-
-    if (loginToken === null && loginUser === null && loginPass === null) {
-      this.props.history.push('/')
-      localStorage.clear()
-    }
   }
 
   render() {
-    return (      
+    return (
       <body class="container">
-        <Link to="/"> Home </Link>
+        <InfoPizzaAdminDashboard />
         <h2 class="basic-title text-center">Pedidos Feitos</h2>
-        <div>
+        <div class="listagem">
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -46,8 +49,9 @@ export default class Pedidos extends React.Component {
               {this.state.pedidos.map(pedidos => (
                 <tr>
                   <td id="infoClienteAtras">
-                    <Link to={`pedido/info/${pedidos.id}`}
-                    params={{id: pedidos.id}}
+                    <Link
+                      to={`pedido/info/${pedidos.id}`}
+                      params={{ id: pedidos.id }}
                     >
                       {pedidos.cliente}
                     </Link>

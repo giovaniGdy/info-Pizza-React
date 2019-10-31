@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+}
+.navbar {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  background-color: rgb(156, 0, 34);
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 30px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: chocolate;
+  display:block;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: chocolate;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+  display:block;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  position:relative; 
+  display: grid;
+}
+
+.logOutbtn {
+  float: right;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.logOutbtn:hover {
+  background-color: darkred;
+  cursor: pointer;
+}

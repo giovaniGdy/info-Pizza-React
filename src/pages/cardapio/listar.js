@@ -1,10 +1,10 @@
 import React from "react";
-
-import { confirmIsLoged } from '../../services/Autenticator'
-
 import { Link } from "react-router-dom";
-
 import axios from "axios";
+
+import Auth from "../../components/Auth/auth";
+
+import InfoPizza_AdminDashboard from "../dashboard";
 
 export default class Cardapio extends React.Component {
   state = {
@@ -12,43 +12,48 @@ export default class Cardapio extends React.Component {
   };
 
   async componentDidMount() {
-    confirmIsLoged();
+    const r = await Auth();
+    if (r === true) {
+      this.carregar();
+    } else {
+      this.props.history.push("/");
+    }
+  }
 
+  async carregar() {
     await axios.get(`http://localhost:8081/cardapio`).then(res => {
       const cardapio = res.data;
       this.setState({ cardapio });
-    });  
-      
-  }
-
-  async confirmIsLoged() {
-    const loginToken = localStorage.getItem('info-Pizza-token-for-login');
-    const loginUser = localStorage.getItem('info-Pizza-userName-for-login');
-    const loginPass = localStorage.getItem('info-Pizza-senha-for-login');
-
-    if (loginToken === null && loginUser === null && loginPass === null) {
-      this.props.history.push('/')
-      localStorage.clear()
-    }
+    });
   }
 
   render() {
     return (
       <body class="container">
-        <Link to="/"> Home </Link>
+        <InfoPizza_AdminDashboard />
         <h2 class="basic-title text-center">cardapio</h2>
         <div>
           <table class="table table-bordered">
             <div>
               {this.state.cardapio.map(item => (
-                
                 <div id="blocoItem">
-                <Link to={`/cardapio/item-info/${item.id}`} params={{id: item.id}}> {item.nome} </Link> <br/>
-                <img src={`${item.imgUrl}`} id="itemImg" alt="item do Cardapio"/><br/>
-                <p id="itemPreco">R$ {item.preco}</p> <br/>
-                <p id="itemStatus"> {item.status}</p>
+                  <Link
+                    to={`/cardapio/item-info/${item.id}`}
+                    params={{ id: item.id }}
+                  >
+                    {" "}
+                    {item.nome}{" "}
+                  </Link>{" "}
+                  <br />
+                  <img
+                    src={`${item.imgUrl}`}
+                    id="itemImg"
+                    alt="item do Cardapio"
+                  />
+                  <br />
+                  <p id="itemPreco">R$ {item.preco}</p> <br />
+                  <p id="itemStatus"> {item.status}</p>
                 </div>
-
               ))}
             </div>
           </table>

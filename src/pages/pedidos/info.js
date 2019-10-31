@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
+
+import Auth from "../../components/Auth/auth";
+
+import InfoPizzaAdminDashboard from "../dashboard";
 
 export default class info extends React.Component {
   state = {
@@ -15,29 +18,40 @@ export default class info extends React.Component {
   };
 
   async componentDidMount() {
+    const r = await Auth();
+    if (r === true) {
+      this.carregar();
+    } else {
+      this.props.history.push("/");
+    }
+  }
+
+  async carregar() {
     const id = this.props.match.params.id;
     await axios.get(`http://localhost:8081/pedidos/info/${id}`).then(res => {
       this.setState({
-          cliente: res.data.pedido.cliente,
-          telefone: res.data.pedido.telefone,
-          endereco: res.data.pedido.endereco,
-          cpf: res.data.pedido.cpf,
-          pedido: res.data.pedido.pedido,
-          status: res.data.pedido.status,
+        cliente: res.data.pedido.cliente,
+        telefone: res.data.pedido.telefone,
+        endereco: res.data.pedido.endereco,
+        cpf: res.data.pedido.cpf,
+        pedido: res.data.pedido.pedido,
+        status: res.data.pedido.status
       });
     });
   }
 
   handlePedidoDelete = event => {
-    axios.delete(`http://localhost:8081/pedidos/${this.props.match.params.id}`).then(res => {
+    axios
+      .delete(`http://localhost:8081/pedidos/${this.props.match.params.id}`)
+      .then(res => {
         if (res.data === "S") {
-            alert("Pedido Deletado Com Sucesso!")
-            this.props.history.push('/pedidos')
-        }  else {
-            alert("Ops... Não foi possível deletar, ocorreu algum erro!")
+          alert("Pedido Deletado Com Sucesso!");
+          this.props.history.push("/pedidos");
+        } else {
+          alert("Ops... Não foi possível deletar, ocorreu algum erro!");
         }
-    });
-  }
+      });
+  };
 
   handleChangeStatus = event => {
     this.setState({
@@ -46,7 +60,7 @@ export default class info extends React.Component {
   };
 
   handleSubmit = event => {
-    const id = this.state.id
+    const id = this.state.id;
     event.preventDefault();
 
     const pedido = {
@@ -61,11 +75,11 @@ export default class info extends React.Component {
 
     axios.put(`http://localhost:8081/pedidos/${id}`, { pedido }).then(res => {
       if (res.data === "Erro") {
-        alert("Ops... Não foi possível fazer o pedido, ocorreu algum erro!")        
-    }  else {
-        alert("Pedido Atualizado Com Sucesso!")
-        this.props.history.push('/pedidos')
-    }
+        alert("Ops... Não foi possível fazer o pedido, ocorreu algum erro!");
+      } else {
+        alert("Pedido Atualizado Com Sucesso!");
+        this.props.history.push("/pedidos");
+      }
     });
   };
 
@@ -73,7 +87,7 @@ export default class info extends React.Component {
     const pedido = this.state;
     return (
       <div>
-        <Link to="/pedidos"> ↩ Voltar </Link>
+        <InfoPizzaAdminDashboard />
         <form onSubmit={this.handleSubmit}>
           <div>
             Nome:
@@ -108,9 +122,7 @@ export default class info extends React.Component {
           <div>
             Alterar Status Para:
             <select name="status" onChange={this.handleChangeStatus}>
-              <option value={pedido.status} >
-                Selecione
-              </option>
+              <option value={pedido.status}>Selecione</option>
               <option value="Pedido Realizado">Pedido Realizado</option>
               <option value="Preparo Iniciado">Preparo Iniciado</option>
               <option value="Saiu P/ Entrega">Saiu P/ Entrega</option>
