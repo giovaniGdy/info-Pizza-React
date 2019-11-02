@@ -1,80 +1,112 @@
-body {
-    margin: 5%;
-}
-
-#returnBtnDiv {
-    background-color: chocolate;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 30px;
-
-}
-
-form {
-    background-color: brown;
-    height: 100%;
-    width: 100%;
+#returnDiv {
+  background-color: rgb(255, 136, 0);
+  width: 100%;
+  height: 41px;
+  text-align: center;
+  font-size: 30px;
+  position: fixed;
 }
 
 #returnBtn {
-    color: black;
-    margin-right: 150px;
-    text-decoration: none;
+  color: black;
+  margin-right: 150px;
+  text-decoration: none;
 }
 
 #precoTotal {
-    text-align: center;
-    width: 50%;
+  text-align: center;
+  width: 50%;
 }
 
 #returnBtn:hover {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
-#margemInterna {
-    margin: 15px
+#linhaDivisoria {
+    margin: 0;
+    border-width: 2px;
+    color: black;
 }
 
-#titulos {
-    color: white;
-    margin: 0px;
-    font-size: 20px;    
+#formPedido {
+padding-top: 0;
+  padding: 5%;
+  background-color: rgb(255, 199, 136);
 }
 
-#inputs {
-    text-decoration: none;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.534);
-    width: 50%;
+#textInputs {
+    text-align: left;
+    margin: 5%;
+    margin-top: 0;
 }
 
-#itensCardapio {
+#titulosPedido {
+  color: black;
+  font-size: 30px;
+  margin: 1%;
+}
+
+#inputPedido {
+  width: 50%;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#inputPedido-text {
+  display: block;
+  margin: 0;
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-weight: inherit;
+  border: none;
+  border-radius: 10px;
+  transition: box-shadow;
+}
+
+#inputPedido:focus {
+    outline: none;
+    box-shadow: 0.2px 2.8px 10.6px;
+}
+
+#inputPedido::placeholder {
+    color: #B0BEC5;
+}
+
+#cardapio{
     display: flex;
     flex-flow: row wrap;
 }
 
-#blocoItem {
+#itensCardapio {
+    background-color: white;
     flex: 1 1 auto;
     width: 300px;
     height: 100%;
     text-align: center;
-    padding: 15px;
-    border-radius: 15px;
+    margin: 1%;
+    text-decoration: none;
 }
 
-#itemImg {
-    margin: 5px;
-    height: 200px;
-    width: 200px;
-    border-radius: 25px;
+
+
+#concluirButton {
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
-#itemPreco {
-    font-size: 20px;
-}
-
-#precoCardapio {
-    background-color: gray;
+#concluirButtonDiv {
+    background-color: rgb(182, 0, 0);
+    position: relative;
+    width: 100;
+    margin: 0px;
 }

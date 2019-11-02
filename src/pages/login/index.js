@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
+
+import "../styles/login/styles.css"
 
 export default class LoginScreen extends React.Component {
   state = {
@@ -49,7 +50,7 @@ export default class LoginScreen extends React.Component {
     return (
       <div>
         <Link to="/"> Home </Link>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} id="loginForm">
           <div>
             Username:
             <input

@@ -13,8 +13,7 @@ export default class novoPedido extends React.Component {
     cpf: "",
     pedido: "",
     status: "Pedido Realizado",
-    
-    preco: "00,00"
+    preco: 0
   };
 
   async componentDidMount() {
@@ -50,6 +49,17 @@ export default class novoPedido extends React.Component {
     });
   };
 
+  handlePreco = event => {
+    const valorItem = parseFloat(event.target.attributes[0].value)
+    const valorPedido = parseFloat(this.state.preco)
+
+    let valorTotal = valorItem + valorPedido
+
+    this.setState({
+      preco: valorTotal
+    })
+  }
+
   handleSubmit = event => {
     event.preventDefault();
 
@@ -76,82 +86,75 @@ export default class novoPedido extends React.Component {
     const pedido = this.state;
     return (
       <body>
-        <div id="returnBtnDiv">
+        <div id="returnDiv">
           <Link id="returnBtn" to="/">
-            {" "}
-            ↩ Voltar{" "}
+            ↩ Voltar
           </Link>
-          <label id="precoTotal">R$ {pedido.preco}</label>
+          <label>R$ {pedido.preco}</label>
+          <hr id="linhaDivisoria" />
         </div>
         <form onSubmit={this.handleSubmit}>
-          <div id="margemInterna">
+          <div id="formPedido">
+            <div id="textInputs">
             <div>
-              <p id="titulos">Nome:</p>
+              <p id="titulosPedido">Nome:</p>
               <input
                 type="text"
                 name="cliente"
-                id="inputs"
+                id="inputPedido"
                 onChange={this.handleChangeCliente}
               />
             </div>
-            <br />
             <div>
-              <p id="titulos">Telefone:</p>
+              <p id="titulosPedido">Telefone:</p>
               <input
                 type="text"
                 name="telefone"
-                id="inputs"
+                id="inputPedido"
                 onChange={this.handleChangeTelefone}
                 minLength="9"
                 maxLength="9"
               />
             </div>
-            <br />
             <div>
-              <p id="titulos">Endereco:</p>
+              <p id="titulosPedido">Endereco:</p>
               <input
                 type="text"
                 name="endereco"
-                id="inputs"
+                id="inputPedido"
                 onChange={this.handleChangeEndereco}
               />
             </div>
-            <br />
             <div>
-              <p id="titulos">CPF:</p>
+              <p id="titulosPedido">CPF:</p>
               <input
                 type="text"
                 name="cpf"
-                id="inputs"
+                id="inputPedido"
                 onChange={this.handleChangeCPF}
                 minLength="11"
                 maxLength="11"
               />
             </div>
-            <br />
-            <div id="itensCardapio">
+            </div>
+            <div id="cardapio">
               {this.state.cardapio.map(item => (
-                <div id="blocoItem">
-                  <Link
-                    to={`/cardapio/item-info/${item.id}`}
-                    params={{ id: item.id }}
-                  >
-                    {item.nome}
-                  </Link>
+                <div id="itensCardapio">
+                  <p>{item.nome}</p>
                   <br />
-                  <img
-                    src={`${item.imgUrl}`}
-                    id="itemImg"
-                    alt="item do Cardapio"
-                  />
+                  <img src={`${item.imgUrl}`} alt="item do Cardapio" />
                   <br />
-                  <p id="itemPreco">R$ {item.preco}</p> <br />
-                  <p id="itemStatus"> {item.status}</p>
+                  <p>R$ {item.preco}</p> <br />
+                  <p> {item.status}</p>
+                  <label value={item.preco} onClick={this.handlePreco}> + {item.preco} </label>
                 </div>
               ))}
             </div>
-
-            <button type="submit">Fazer Pedido</button>
+          </div>
+          <div id="concluirButtonDiv">
+            <button id="concluirButton" type="submit">
+              Fazer Pedido
+            </button>
           </div>
         </form>
       </body>

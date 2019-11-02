@@ -11,7 +11,7 @@ export default class novoItem extends React.Component {
     nome: "",
     preco: "",
     descricao: "",
-    imgUrl: "",
+    image: null,
     status: ""
   };
 
@@ -40,7 +40,7 @@ export default class novoItem extends React.Component {
   };
   handleChangeImgURL = event => {
     this.setState({
-      imgUrl: event.target.value
+      image: event.target.files[0]
     });
   };
   handleChangeStatus = event => {
@@ -49,24 +49,30 @@ export default class novoItem extends React.Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+    let data = new FormData();
 
-    const item = {
-      nome: this.state.nome,
-      preco: this.state.preco,
-      descricao: this.state.descricao,
-      imgUrl: this.state.imgUrl,
-      status: this.state.status
-    };
+    data.append('nome', this.state.nome)
+    data.append('descricao', this.state.descricao)
+    data.append('preco', this.state.preco)
+    data.append('image', this.state.image)
+    data.append('status', this.state.status)
 
-    axios.post("http://localhost:8081/cardapio", { item }).then(res => {
-      if (res.data === "S") {
-        alert("Item Adicionado Ao Cardapio!");
-        this.props.history.push("/cardapio");
-      } else {
-        alert("Ops... Não foi possível fazer o pedido, ocorreu algum erro!");
-      }
+    for (let key of data.entries()) {
+      console.log(key)
+    } 
+    
+    
+    await axios.post("http://localhost:8081/cardapio-img", data ).then(res => {
+      console.log(res.statusText)
+    
+    // if (res.data === "S") {
+      //   alert("Item Adicionado Ao Cardapio!");
+      //   this.props.history.push("/cardapio");
+      // } else {
+      //   alert("Ops... Não foi possível fazer o pedido, ocorreu algum erro!");
+      // }
     });
   };
 
@@ -98,7 +104,7 @@ export default class novoItem extends React.Component {
             Imagem:
             <input
               type="file"
-              name="imgUrl"
+              name="image"
               onChange={this.handleChangeImgURL}
             />
           </div>

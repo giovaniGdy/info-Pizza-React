@@ -4,7 +4,7 @@ import axios from "axios";
 
 import Auth from "../../components/Auth/auth";
 
-import InfoPizza_AdminDashboard from "../dashboard";
+import InfoPizzaAdminDashboard from "../dashboard";
 
 export default class Cardapio extends React.Component {
   state = {
@@ -29,8 +29,9 @@ export default class Cardapio extends React.Component {
 
   render() {
     return (
-      <body class="container">
-        <InfoPizza_AdminDashboard />
+      <body class="formPedido">
+        <InfoPizzaAdminDashboard />
+        <div>
         <h2 class="basic-title text-center">cardapio</h2>
         <div>
           <table class="table table-bordered">
@@ -50,6 +51,7 @@ export default class Cardapio extends React.Component {
                     id="itemImg"
                     alt="item do Cardapio"
                   />
+                  <img src="localhost:8081/img/3.jpg" alt="aaaa"></img>
                   <br />
                   <p id="itemPreco">R$ {item.preco}</p> <br />
                   <p id="itemStatus"> {item.status}</p>
@@ -59,6 +61,7 @@ export default class Cardapio extends React.Component {
           </table>
         </div>
         <a href="/adicionar-item">Adicionar Novo Item</a>
+        </div>
       </body>
     );
   }
