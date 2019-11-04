@@ -15,7 +15,6 @@ export default class Pedidos extends React.Component {
 
   async componentDidMount() {
     const r = await Auth();
-    console.log(r);
     if (r === true) {
       this.carregar();
     } else {
@@ -25,6 +24,7 @@ export default class Pedidos extends React.Component {
 
   async carregar() {
     await axios.get(`http://localhost:8081/pedidos`).then(res => {
+      console.log(res.data)
       const pedidos = res.data;
       this.setState({ pedidos });
     });
@@ -40,8 +40,8 @@ export default class Pedidos extends React.Component {
             <thead>
               <tr>
                 <th>Cliente</th>
-                <th>Endereço</th>
                 <th>Pedido Realizado em:</th>
+                <th>Valor:</th>
                 <th>Status:</th>
               </tr>
             </thead>
@@ -56,15 +56,14 @@ export default class Pedidos extends React.Component {
                       {pedidos.cliente}
                     </Link>
                   </td>
-                  <td>{pedidos.endereco}</td>
                   <td>{pedidos.updatedAt}</td>
+                  <td>R${pedidos.preco}</td>
                   <td>{pedidos.status}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <a href="/novo-pedido">Cadastrar Pedido</a>
       </body>
     );
   }

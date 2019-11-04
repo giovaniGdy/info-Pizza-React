@@ -14,44 +14,44 @@ export default class infoPizzaAdminDashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="dashboardBody">
         <header>
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           />
         </header>
-        <div class="navbar">
-          <div class="navbarBack">
-            <a href="/dashboard-manager">Home</a>
-            <div class="subnav">
-              <button class="subnavbtn">
-                Pedidos <i class="fa fa-caret-down"></i>
+        <div id="navbar">
+          <div id="navbarBack">
+            <a href="/dashboard-manager" id="dashboardHome">Home</a>
+            <div id="subnav">
+              <button id="subnavbtn">
+                Pedidos <i id="fa fa-caret-down"></i>
               </button>
-              <div class="subnav-content">
+              <div id="subnav-content">
                 <a href="/pedidos">Listar</a>
               </div>
             </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                Cardapio <i class="fa fa-caret-down"></i>
+            <div id="subnav">
+              <button id="subnavbtn">
+                Cardapio <i id="fa fa-caret-down"></i>
               </button>
-              <div class="subnav-content">
+              <div id="subnav-content">
                 <a href="/cardapio">Listar</a>
                 <a href="/adicionar-item">Adicionar Item</a>
               </div>
             </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                Feed de Postagens <i class="fa fa-caret-down"></i>
+            <div id="subnav">
+              <button id="subnavbtn">
+                Feed de Postagens <i id="fa fa-caret-down"></i>
               </button>
-              <div class="subnav-content">
+              <div id="subnav-content">
                 <a href="/feed-posts">Visualizar Publicações</a>
                 <a href="/nova-postagem">Publicar</a>
               </div>
             </div>
           </div>
-            <button class="logOutbtn" onClick={this.LogoutBtn}>Encerrar Sessão</button>
+            <button id="logOutbtn" onClick={this.LogoutBtn}>Encerrar Sessão</button>
         </div>
       </div>
     );

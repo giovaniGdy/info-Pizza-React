@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Auth from "../../components/Auth/auth";
 
-import InfoPizza_AdminDashboard from "../dashboard";
+import InfoPizzaAdminDashboard from "../dashboard";
 
 export default class infoCardapio extends React.Component {
   state = {
@@ -104,7 +103,7 @@ export default class infoCardapio extends React.Component {
     const item = this.state;
     return (
       <div>
-        <InfoPizza_AdminDashboard />
+        <InfoPizzaAdminDashboard />
         <form onSubmit={this.handleSubmit}>
           <div>
             Nome:

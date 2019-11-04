@@ -30,7 +30,7 @@ export default class feedPosts extends React.Component {
   render() {
     return (
       <body class="container">
-      <InfoPizzaAdminDashboard />
+        <InfoPizzaAdminDashboard />
         <h2 class="basic-title text-center">Postagens</h2>
         <div>
           <table class="table table-bordered">
@@ -51,7 +51,6 @@ export default class feedPosts extends React.Component {
             </div>
           </table>
         </div>
-        <a href="/nova-postagem">Adicionar Novo Item</a>
       </body>
     );
   }

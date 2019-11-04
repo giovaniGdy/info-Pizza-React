@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Auth from "../../components/Auth/auth";
@@ -14,6 +13,7 @@ export default class info extends React.Component {
     endereco: "",
     cpf: "",
     pedido: "",
+    preco: "",
     status: ""
   };
 
@@ -35,6 +35,7 @@ export default class info extends React.Component {
         endereco: res.data.pedido.endereco,
         cpf: res.data.pedido.cpf,
         pedido: res.data.pedido.pedido,
+        preco: res.data.pedido.preco,
         status: res.data.pedido.status
       });
     });
@@ -112,6 +113,11 @@ export default class info extends React.Component {
           <div>
             Pedido:
             <label name="pedido"> {pedido.pedido} </label>
+          </div>
+          <br />
+          <div>
+            Valor:
+            <label name="valor"> {pedido.preco} </label>
           </div>
           <br />
           <div>

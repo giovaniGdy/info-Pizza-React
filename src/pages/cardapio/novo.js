@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Auth from "../../components/Auth/auth";
 
 import InfoPizzaAdminDashboard from "../dashboard";
+
+import "../styles/cardapio/cadastrar.css"
 
 export default class novoItem extends React.Component {
   state = {
@@ -80,6 +81,7 @@ export default class novoItem extends React.Component {
     return (
       <body>
         <InfoPizzaAdminDashboard/>
+        <div id="formCardapio">
         <form onSubmit={this.handleSubmit}>
           <div>
             Nome:
@@ -120,6 +122,7 @@ export default class novoItem extends React.Component {
 
           <button type="submit">Fazer Pedido</button>
         </form>
+        </div>
       </body>
     );
   }

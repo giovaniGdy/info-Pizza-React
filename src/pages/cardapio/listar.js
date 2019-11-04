@@ -32,35 +32,34 @@ export default class Cardapio extends React.Component {
       <body class="formPedido">
         <InfoPizzaAdminDashboard />
         <div>
-        <h2 class="basic-title text-center">cardapio</h2>
-        <div>
-          <table class="table table-bordered">
-            <div>
-              {this.state.cardapio.map(item => (
-                <div id="blocoItem">
-                  <Link
-                    to={`/cardapio/item-info/${item.id}`}
-                    params={{ id: item.id }}
-                  >
-                    {" "}
-                    {item.nome}{" "}
-                  </Link>{" "}
-                  <br />
-                  <img
-                    src={`${item.imgUrl}`}
-                    id="itemImg"
-                    alt="item do Cardapio"
-                  />
-                  <img src="localhost:8081/img/3.jpg" alt="aaaa"></img>
-                  <br />
-                  <p id="itemPreco">R$ {item.preco}</p> <br />
-                  <p id="itemStatus"> {item.status}</p>
-                </div>
-              ))}
-            </div>
-          </table>
-        </div>
-        <a href="/adicionar-item">Adicionar Novo Item</a>
+          <h2 class="basic-title text-center">cardapio</h2>
+          <div>
+            <table class="table table-bordered">
+              <div>
+                {this.state.cardapio.map(item => (
+                  <div id="blocoItem">
+                    <Link
+                      to={`/cardapio/item-info/${item.id}`}
+                      params={{ id: item.id }}
+                    >
+                      {" "}
+                      {item.nome}{" "}
+                    </Link>{" "}
+                    <br />
+                    <img
+                      src={`${item.imgUrl}`}
+                      id="itemImg"
+                      alt="item do Cardapio"
+                    />
+                    <img src="localhost:8081/img/3.jpg" alt="aaaa"></img>
+                    <br />
+                    <p id="itemPreco">R$ {item.preco}</p> <br />
+                    <p id="itemStatus"> {item.status}</p>
+                  </div>
+                ))}
+              </div>
+            </table>
+          </div>
         </div>
       </body>
     );
