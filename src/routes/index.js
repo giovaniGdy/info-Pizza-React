@@ -18,6 +18,7 @@ import novaPublicacao from "../pages/feed/novo"
 import infoPostagem from "../pages/feed/info"
 
 import LoginScreen from "../pages/login"
+import loginAlt from "../pages/login/userAlt"
 
 const Routes = () => (
   <BrowserRouter>
@@ -39,6 +40,7 @@ const Routes = () => (
       <Route exact path="/feed/postagem/:id" component={infoPostagem}/>
 
       <Route exact path="/login" component={LoginScreen} />
+      <Route exact path="/user-data" component={loginAlt}/>
       
     </Switch>
   </BrowserRouter>

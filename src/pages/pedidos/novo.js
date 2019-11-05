@@ -167,8 +167,6 @@ export default class novoPedido extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    this.PopUp()
-
     if (this.state.CPFvalidator === true) {
       Object.entries(localStorage).map(item => {
         if (item[0].slice(4, 25) !== "info") {
@@ -191,8 +189,6 @@ export default class novoPedido extends React.Component {
         preco: this.state.preco,
         status: "Pedido Realizado"
       };
-
-      console.log(pedido);
 
       axios.post("http://localhost:8081/pedidos", { pedido }).then(res => {
         if (res.data.status === "Pedido Realizado") {

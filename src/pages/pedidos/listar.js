@@ -32,23 +32,22 @@ export default class Pedidos extends React.Component {
 
   render() {
     return (
-      <body class="container">
+      <body id="listaPedidos">
         <InfoPizzaAdminDashboard />
-        <h2 class="basic-title text-center">Pedidos Feitos</h2>
-        <div class="listagem">
-          <table class="table table-bordered">
+        <div id="listagem">
+          <table>
             <thead>
               <tr>
-                <th>Cliente</th>
-                <th>Pedido Realizado em:</th>
-                <th>Valor:</th>
-                <th>Status:</th>
+                <th id="tituloTabela">Cliente</th>
+                <th id="tituloTabela">Pedido Realizado em:</th>
+                <th id="tituloTabela">Valor:</th>
+                <th id="tituloTabela">Status:</th>
               </tr>
             </thead>
             <tbody>
               {this.state.pedidos.map(pedidos => (
-                <tr>
-                  <td id="infoClienteAtras">
+                <tr id="itemCardapio">
+                  <td id="infoTabela">
                     <Link
                       to={`pedido/info/${pedidos.id}`}
                       params={{ id: pedidos.id }}
@@ -56,9 +55,9 @@ export default class Pedidos extends React.Component {
                       {pedidos.cliente}
                     </Link>
                   </td>
-                  <td>{pedidos.updatedAt}</td>
-                  <td>R${pedidos.preco}</td>
-                  <td>{pedidos.status}</td>
+                  <td id="infoTabela">{pedidos.updatedAt}</td>
+                  <td id="infoTabela">R${pedidos.preco}</td>
+                  <td id="infoTabela">{pedidos.status}</td>
                 </tr>
               ))}
             </tbody>
