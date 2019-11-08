@@ -1,0 +1,33 @@
+#feedListarBack {
+  position: absolute;
+  background-color: rgb(253, 255, 129);
+  width: 100%;
+}
+
+#feedListarBody {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+#feedPostagensFeitas {
+  height: 100%;
+  background-color: rgb(253, 255, 129);
+}
+
+#feedListarTitulo {
+  margin: 3px;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+#feedListarData {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#feedListarDescricao {
+  font-size: 20px;
+  border-bottom-style: solid;
+}

@@ -1,0 +1,50 @@
+#cardapioListaBack {
+  position: absolute;
+  background-color: rgb(255, 162, 74);
+  width: 100%;
+}
+
+#cardapioListaBody {
+  margin: auto;
+  text-align: center;
+}
+
+#cardapioListaItens {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#itensCardapio {
+  background-color: white;
+  flex: 1 1 auto;
+  width: 300px;
+  height: 100%;
+  text-align: center;
+  margin: 1%;
+  text-decoration: none;
+}
+
+#itensCardapio:hover {
+  background-color: rgb(255, 106, 106);
+  transition: 0.6s;
+}
+
+#cardapioItemTituloLink {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+#cardapioItemDescricao {
+  margin: 0;
+}
+
+#cardapioItemImg {
+  width: 200px;
+  border-radius: 10px;
+}
+
+#cardapioItemDescricaoPreco {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;    
+}

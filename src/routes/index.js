@@ -3,11 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Site from "../pages/site";
 
-import infoPizza_AdminDashboard from "../pages/dashboard"
+import dashPage from "../pages/dashboard/dashHome"
 
 import Pedidos from "../pages/pedidos/listar";
 import NovoPedido from "../pages/pedidos/novo";
 import InfoPedido from "../pages/pedidos/info";
+import Unico from "../pages/pedidos/unico";
 
 import Cardapio from "../pages/cardapio/listar"
 import NovoItem from "../pages/cardapio/novo"
@@ -25,11 +26,12 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={Site} />
 
-      <Route exact path="/dashboard-manager" component={infoPizza_AdminDashboard}/>
+      <Route exact path="/dashPage" component={dashPage}/>
 
       <Route exact path="/pedidos" component={Pedidos}/>
       <Route exact path="/novo-pedido" component={NovoPedido} />
       <Route exact path="/pedido/info/:id" component={InfoPedido} />
+      <Route exact path="/verificar-status" component={Unico} />
 
       <Route exact path="/cardapio" component={Cardapio} />
       <Route exact path="/adicionar-item" component={NovoItem} />

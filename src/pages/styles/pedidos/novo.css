@@ -1,0 +1,208 @@
+#fazerPedidoBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 199, 136);
+}
+
+#returnBtn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 48px;
+  font-size: 20px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: black;
+  border-bottom-style: solid;
+  background-color: rgba(255, 255, 255, 0.37);
+  border-color: rgb(255, 255, 255);
+}
+
+#precoTotal {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(255, 136, 0);
+}
+
+#returnBtn:hover {
+  color: black;
+  transition: 2s;
+  background-color: white;
+  text-decoration: none;
+}
+
+
+#formPedido {
+  padding-top: 0;
+  height: 100%;
+  background-color: rgb(255, 199, 136);
+}
+
+.popUp {
+  background-color: green;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  width: 500px;
+}
+
+.popUp:hover {
+  background-color: rgb(0, 175, 0);
+  transition: 3s;
+}
+
+.popUp p {
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+  margin: 5px;
+}
+
+.popUp a {
+  text-decoration: none;
+  background-color: rgb(255, 166, 0);
+  padding: 10px 100px 10px 100px;
+}
+
+.popUpError {
+  background-color: rgb(184, 0, 0);
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  width: 500px;
+}
+
+.popUpError:hover {
+  background-color: red;
+  transition: 3s;
+}
+
+#textInputs {
+  text-align: left;
+  margin: 5%;
+  margin-top: 0;
+}
+
+#titulosPedido {
+  color: black;
+  font-size: 30px;
+  margin: 1%;
+}
+
+#inputPedido {
+  width: 50%;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#inputPedido-text {
+  display: block;
+  margin: 0;
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-weight: inherit;
+  border: none;
+  border-radius: 10px;
+  transition: box-shadow;
+}
+
+#inputPedido:focus {
+  outline: none;
+  box-shadow: 0.2px 2.8px 10.6px;
+}
+
+#inputPedido::placeholder {
+  color: #b0bec5;
+}
+
+#cardapio {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#itensCardapio {
+  background-color: white;
+  flex: 1 1 auto;
+  width: 300px;
+  height: 100%;
+  text-align: center;
+  margin: 1%;
+  text-decoration: none;
+}
+
+#itemImage {
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+}
+
+#itemPreco {
+  margin: 0;
+}
+
+.quantidadeItem {
+  font-size: 30px;
+  color: white;
+  margin: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgb(0, 0, 0);
+}
+
+#removeButton {
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: red;
+}
+
+#removeButton {
+  cursor: pointer;
+}
+
+#addButton {
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: lawngreen;
+}
+
+#addButton:hover {
+  cursor: pointer;
+}
+
+#concluirButton {
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+#concluirButton {
+  cursor: pointer;
+}
+
+#concluirButtonDiv {
+  background-color: rgb(182, 0, 0);
+  position: initial;
+  width: 100%;
+  margin: 0px;
+  bottom: 0;
+}

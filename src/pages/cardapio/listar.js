@@ -28,38 +28,34 @@ export default class Cardapio extends React.Component {
   }
 
   render() {
+    const imagesUrl = `http://localhost:8081/img/`;
     return (
-      <body class="formPedido">
+      <body id="cardapioListaBack">
         <InfoPizzaAdminDashboard />
-        <div>
-          <h2 class="basic-title text-center">cardapio</h2>
-          <div>
-            <table class="table table-bordered">
-              <div>
-                {this.state.cardapio.map(item => (
-                  <div id="blocoItem">
-                    <Link
-                      to={`/cardapio/item-info/${item.id}`}
-                      params={{ id: item.id }}
-                    >
-                      {" "}
-                      {item.nome}{" "}
-                    </Link>{" "}
-                    <br />
-                    <img
-                      src={`${item.imgUrl}`}
-                      id="itemImg"
-                      alt="item do Cardapio"
-                    />
-                    <img src="localhost:8081/img/3.jpg" alt="aaaa"></img>
-                    <br />
-                    <p id="itemPreco">R$ {item.preco}</p> <br />
-                    <p id="itemStatus"> {item.status}</p>
-                  </div>
-                ))}
-              </div>
-            </table>
-          </div>
+        <div id="cardapioListaBody">
+          <table>
+            <div id="cardapioListaItens">
+              {this.state.cardapio.map(item => (
+                <div id="itensCardapio">
+                  <Link
+                    id="cardapioItemTituloLink"
+                    to={`/cardapio/item-info/${item.id}`}
+                    params={{ id: item.id }}
+                  >
+                    {item.nome}
+                  </Link>
+                  <p id="cardapioItemDescricao">{item.descricao}</p>
+                  <img
+                    src={`${imagesUrl}${item.imgUrl}`}
+                    id="cardapioItemImg"
+                    alt="item do Cardapio"
+                  />
+                  <p id="cardapioItemDescricaoPreco">R$ {item.preco}</p>
+                  <p id="cardapioItemDescricao"> {item.status}</p>
+                </div>
+              ))}
+            </div>
+          </table>
         </div>
       </body>
     );

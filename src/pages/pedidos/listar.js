@@ -4,8 +4,6 @@ import axios from "axios";
 
 import Auth from "../../components/Auth/auth";
 
-import "../styles/pedidos/listagem.css";
-
 import InfoPizzaAdminDashboard from "../dashboard";
 
 export default class Pedidos extends React.Component {
@@ -24,7 +22,7 @@ export default class Pedidos extends React.Component {
 
   async carregar() {
     await axios.get(`http://localhost:8081/pedidos`).then(res => {
-      console.log(res.data)
+      console.log(res.data);
       const pedidos = res.data;
       this.setState({ pedidos });
     });
@@ -32,37 +30,43 @@ export default class Pedidos extends React.Component {
 
   render() {
     return (
-      <body id="listaPedidos">
+      <body id="listaBack">
         <InfoPizzaAdminDashboard />
-        <div id="listagem">
-          <table>
-            <thead>
-              <tr>
-                <th id="tituloTabela">Cliente</th>
-                <th id="tituloTabela">Pedido Realizado em:</th>
-                <th id="tituloTabela">Valor:</th>
-                <th id="tituloTabela">Status:</th>
+        <table id="listaBody">
+          <thead>
+            <tr>
+              <th id="tituloTabela">Cliente</th>
+              <th id="tituloTabela">Horário/Data:</th>
+              <th id="tituloTabela">Pedido:</th>
+              <th id="tituloTabela">Valor:</th>
+              <th id="tituloTabela">Status:</th>
+            </tr>
+          </thead>
+          <tbody id="listaDePedidosBack">
+            {this.state.pedidos.map(pedidos => (
+              <tr id="itemCardapio">
+                <td id="infoTabela">
+                  <Link
+                    to={`pedido/info/${pedidos.id}`}
+                    params={{ id: pedidos.id }}
+                    id="linkInfosCliente"
+                  >
+                    {pedidos.cliente}
+                  </Link>
+                </td>
+                <td id="infoTabela">
+                  {pedidos.updatedAt
+                    .replace("T", "  == ")
+                    .replace(/-/g, "/")
+                    .replace(".000Z", "")}
+                </td>
+                <td id="infoTabela">{pedidos.pedido}</td>
+                <td id="infoTabela">R${pedidos.preco}</td>
+                <td id="infoTabela">{pedidos.status}</td>
               </tr>
-            </thead>
-            <tbody>
-              {this.state.pedidos.map(pedidos => (
-                <tr id="itemCardapio">
-                  <td id="infoTabela">
-                    <Link
-                      to={`pedido/info/${pedidos.id}`}
-                      params={{ id: pedidos.id }}
-                    >
-                      {pedidos.cliente}
-                    </Link>
-                  </td>
-                  <td id="infoTabela">{pedidos.updatedAt}</td>
-                  <td id="infoTabela">R${pedidos.preco}</td>
-                  <td id="infoTabela">{pedidos.status}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </body>
     );
   }

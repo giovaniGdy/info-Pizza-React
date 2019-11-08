@@ -1,0 +1,99 @@
+#statusBack {
+  position: absolute;
+  background-color: rgb(255, 177, 255);
+  width: 100%;
+  height: 100%;
+}
+
+#statusBody {
+  margin: auto;
+  text-align: center;
+  height: 100%;
+}
+
+#statusVoltar {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 20px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: black;
+  border-bottom-style: solid;
+  background-color: rgba(255, 255, 255, 0.37);
+  border-color: rgb(255, 255, 255);
+}
+
+#statusVoltar:hover {
+  background-color: white;
+  transition: 2s;
+}
+
+#statusTituloCodigo {
+  font-size: 25px;
+  margin: 2%;
+}
+
+#statusPesquisa {
+  width: 30%;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#statusPesquisa-text {
+  display: block;
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-weight: inherit;
+  border: none;
+  border-radius: 10px;
+  transition: box-shadow;
+}
+
+#statusPesquisa:focus {
+  outline: none;
+  box-shadow: 0.2px 2.8px 10.6px;
+}
+
+#statusSearchBtn {
+  border-style: none;
+  background-color: rgb(238, 74, 238);
+  width: 30%;
+  padding: 10px;
+  font-size: 15px;
+  margin: 2%;
+}
+
+#statusSearchBtn:hover {
+  cursor: pointer;
+  box-shadow: 0.2px 2.8px 3px rgb(255, 255, 255);
+}
+
+#statusPedidoInfos {
+  text-align: center;
+  margin: auto;
+}
+
+#statusPedidoTitulo {
+  margin: 0;
+  padding: 5px;
+  border-bottom-style: solid;
+}
+
+#statusPedidoInfos {
+  width: 60%;
+  border-style: solid;
+  background-color: white;
+}
+
+#statusPedidoLabel {
+  font-size: 20px;
+  margin: 0px;
+}
+
+#statusPedidoResultado {
+  padding-bottom: 5px;
+  border-bottom-style: solid;
+}

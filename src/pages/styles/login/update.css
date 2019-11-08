@@ -1,0 +1,64 @@
+#userAltBack {
+  position: absolute;
+  background-color: rgb(255, 177, 255);
+  width: 100%;
+  top: 0;
+}
+
+#userAltBody {
+  margin: auto;
+  text-align: center;
+  height: 100%;
+}
+
+#userAltTitulo {
+  color: black;
+  font-size: 30px;
+  margin: 1%;
+}
+
+#userAltInput {
+  text-align: center;
+  width: 40%;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#userAltInput-text {
+  display: block;
+  margin: 0;
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-weight: inherit;
+  border: none;
+  border-radius: 10px;
+  transition: box-shadow;
+}
+
+#userAltInput:focus {
+  outline: none;
+  box-shadow: 0.2px 2.8px 10.6px;
+}
+
+#userAltData {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#userAltBtn {
+  width: 50%;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  padding: 14px 16px;
+  margin: 15px;
+  bottom: 0;
+  background-color: rgb(184, 0, 184);
+}
+
+#userAltBtn {
+    cursor: pointer;
+    box-shadow: 0.2px 2.8px 3px rgb(0, 0, 0);
+}

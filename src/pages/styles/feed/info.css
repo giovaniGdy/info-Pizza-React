@@ -1,0 +1,74 @@
+#feedInfoBack {
+  position: absolute;
+  background-color: rgb(253, 255, 129);
+  width: 100%;
+  height: 100%;
+}
+
+#feedInfoBody {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+#feedInfoTitulo {
+  margin: 0;
+  font-size: 30px;
+}
+
+#feedInfoInputs {
+  width: 50%;
+  padding: 10px;
+  font-size: 15px;
+  text-align: center;
+  margin: 5px;
+}
+
+#feedInfoInputs:focus {
+  outline: none;
+  box-shadow: 0.2px 2.8px 10.6px;
+}
+
+#feedInfoDescricao {
+  width: 60%;
+  height: 400px;
+  font-size: 15px;
+  text-align: center;
+  margin: 5px;
+}
+
+#feedInfoDescricao:focus {
+  outline: none;
+  box-shadow: 0.2px 2.8px 10.6px;
+}
+
+#feedInfoSave {
+  border-style: none;
+  background-color: rgb(201, 204, 26);
+  width: 40%;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 2%;
+}
+
+#feedInfoSave:hover {
+  cursor: pointer;
+  box-shadow: 0.2px 2.8px 3px rgb(0, 0, 0);
+}
+
+#feedInfoDelete {
+  border-style: none;
+  background-color: rgb(102, 0, 0);
+  color: white;
+  width: 40%;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 2%;
+}
+
+#feedInfoDelete:hover {
+  cursor: pointer;
+  box-shadow: 0.2px 2.8px 3px rgb(0, 0, 0);
+}

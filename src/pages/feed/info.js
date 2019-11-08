@@ -36,7 +36,7 @@ export default class infoPostagem extends React.Component {
       .delete(`http://localhost:8081/feed/${this.props.match.params.id}`)
       .then(res => {
         if (res.data === "S") {
-          alert("Pedido Deletado Com Sucesso!");
+          alert("Postagem Deletada Com Sucesso!");
           this.props.history.push("/feed-posts");
         } else {
           alert("Ops... Não foi possível deletar, ocorreu algum erro!");
@@ -77,33 +77,47 @@ export default class infoPostagem extends React.Component {
   render() {
     const post = this.state;
     return (
-      <div>        
+      <div id="feedInfoBack">
         <InfoPizzaAdminDashboard />
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            Título:
-            <input
-              type="text"
-              name="titulo"
-              value={post.titulo}
-              onChange={this.handleChangeTitulo}
-            />
-          </div>{" "}
-          <br />
-          <div>
-            Descrição:
-            <input
-              type="text"
-              name="descricao"
-              value={post.descricao}
-              onChange={this.handleChangeDescricao}
-            />
-          </div>
-          <button type="submit">Publicar Postagem</button>
-        </form>
-        <button type="submit" onClick={this.handleFeedDelete}>
-          Deletar Postagem
-        </button>
+        <div id="feedInfoBody">
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <p id="feedInfoTitulo">Título: </p>
+              <input
+                type="text"
+                name="titulo"
+                value={post.titulo}
+                id="feedInfoInputs"
+                maxLength="50"
+                onChange={this.handleChangeTitulo}
+                required
+              />
+            </div>{" "}
+            <br />
+            <div>
+              <p id="feedInfoTitulo">Descrição:</p>
+              <textarea
+                name="descricao"
+                value={post.descricao}
+                cols="50"
+                rows="10"
+                maxLength="1500"
+                id="feedInfoDescricao"
+                onChange={this.handleChangeDescricao}
+              />
+            </div>
+            <button id="feedInfoSave" type="submit">
+              ✔ Salvar ✔
+            </button>
+          </form>
+          <button
+            id="feedInfoDelete"
+            type="submit"
+            onClick={this.handleFeedDelete}
+          >
+            ✖ Deletar ✖
+          </button>
+        </div>
       </div>
     );
   }

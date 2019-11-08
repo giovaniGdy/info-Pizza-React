@@ -1,40 +1,51 @@
-/* #listaPedidos {
-    float: left;
-    margin: auto;
-    width: 100%;
-    margin: 0px;
-    background-color: rgb(255, 129, 129);
+#listaBack {
+  position: absolute;
+  background-color: rgb(255, 119, 119);
+  width: 100%;
+  height: 100%;
 }
 
-#listagem {
-    text-align: center;
+#listaBody {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  background-color: rgb(255, 119, 119);
 }
 
 #tituloTabela {
-    border-right-width: 3px;
-    border-right-style: solid;
+  border-right-width: 3px;
+  border-right-style: solid;
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  padding: 0px 50px 0px 50px;
+  font-size: 25px;
+  background-color: rgb(255, 31, 31);
+}
 
-    border-left-width: 3px;
-    border-left-style: solid;
-
-    border-bottom-width: 3px;
-    border-bottom-style: solid;
-
-    padding: 0px 50px 0px 50px;
-
-    font-size: 20px;
-    background-color: rgb(255, 129, 129)
+#listaDePedidosBack {
+  background-color: rgb(255, 119, 119);
 }
 
 #itemCardapio:hover {
-    background-color: gray;
+  cursor: default;
+  background-color: white;
+  transition: 0.6s;
 }
 
 #infoTabela {
+  border-right-width: 3px;
+  border-right-style: solid;
 
-    border-right-width: 3px;
-    border-right-style: solid;
+  border-left-width: 3px;
+  border-left-style: solid;
 
-    border-left-width: 3px;
-    border-left-style: solid;
-} */
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#linkInfosCliente {
+    text-decoration: none;
+}

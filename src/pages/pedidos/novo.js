@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
-import "../styles/pedidos/fazerPedido.css";
-
-import PopUp from '../../components/PopupWindows/Pedidos'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default class novoPedido extends React.Component {
   state = {
@@ -94,18 +92,16 @@ export default class novoPedido extends React.Component {
     }
     if (Resto !== parseInt(cpf.substring(10, 11))) {
       this.setState({
-        CPFvalidator: false
+        CPFvalidator: false,
+        CPFMessage: "✖ CPF Inválido!"
       });
-      alert("CPF Inválido!");
     } else {
       this.setState({
         CPFvalidator: true,
-        cpf: cpf
+        cpf: cpf,
+        CPFMessage: "✔ CPF Válido!"
       });
-      alert("CPF Válido!");
     }
-
-    console.log(this.state.cpf);
   };
 
   handleChangePedido = event => {
@@ -192,38 +188,78 @@ export default class novoPedido extends React.Component {
 
       axios.post("http://localhost:8081/pedidos", { pedido }).then(res => {
         if (res.data.status === "Pedido Realizado") {
-          alert("Pedido Realizado Com Sucesso!");
-          this.props.history.push("/");
-          alert(`Este é o seu Número de Pedido!
-          --> ${res.data.id} <--
-          Você pode utiliza-lo para ver o andamento do seu pedido!
-          `)
+          toast(
+            <div>
+              Pedido Realizado! <br />
+              Este é o Número do seu pedido: <br />
+              <p> {res.data.id} </p>
+              Você pode utiliza-lo para verificar o andamento do seu pedido!
+              <br />
+              <br />
+              <a href="/verificar-status">Clique Aqui</a>
+            </div>,
+            {
+              className: "popUp",
+              position: "top-center",
+              autoClose: false
+            }
+          );
         } else {
-          alert("Ops... Não foi possível fazer o pedido, ocorreu algum erro!");
-          window.location.reload();
+          toast(
+            <div>
+              Opss! Ocoreu algum erro... <br />
+              Por favor, recarregue a página! <br />
+              <br />
+              <p>
+                Se isso continuar a acontecer <br />
+                entre em contato com a Pizzaria.
+              </p>
+            </div>,
+            {
+              className: "popUpError",
+              position: "top-center",
+              autoClose: false
+            }
+          );
         }
       });
     } else {
-      alert(`Seu CPF é inválido!
-      Por favor verifique seus dados...
-      `)
+      toast(
+        <div>
+          Os dados inseridos não estão corretos! <br />
+          <br />
+          Por Favor, verifique-os
+        </div>,
+        {
+          className: "popUpError",
+          position: "top-center",
+          autoClose: false
+        }
+      );
     }
   };
+
+  returnHome = event => {};
+  reloadPage() {
+    this.location.reload();
+  }
 
   render() {
     const imagesUrl = `http://localhost:8081/img/`;
     const pedido = this.state;
     return (
-      <body>
+      <body id="fazerPedidoBack">
         <div id="returnDiv">
           <Link id="returnBtn" to="/">
             ↩ Voltar
           </Link>
-          <label>R$ {pedido.preco}</label>
-          <hr id="linhaDivisoria" />
+          <p id="precoTotal">R$ {pedido.preco}</p>
         </div>
         <form onSubmit={this.handleSubmit}>
           <div id="formPedido">
+            <div id="popUp">
+              <ToastContainer />
+            </div>
             <div id="textInputs">
               <div>
                 <p id="titulosPedido">Nome:</p>
@@ -268,6 +304,7 @@ export default class novoPedido extends React.Component {
                   maxLength="11"
                   required
                 />
+                <span>{this.state.CPFMessage}</span>
               </div>
             </div>
             <div id="cardapio">
@@ -288,7 +325,7 @@ export default class novoPedido extends React.Component {
                     onClick={this.handleRemoveProduto}
                     id="removeButton"
                   >
-                    -
+                    ⋁
                   </label>
                   <span
                     className="quantidadeItem"
@@ -303,7 +340,7 @@ export default class novoPedido extends React.Component {
                     onClick={this.handleAddProduto}
                     id="addButton"
                   >
-                    + {this.valueNome}
+                    ⋀ {this.valueNome}
                   </label>
                 </div>
               ))}

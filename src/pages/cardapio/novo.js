@@ -1,19 +1,21 @@
 import React from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Auth from "../../components/Auth/auth";
 
 import InfoPizzaAdminDashboard from "../dashboard";
 
-import "../styles/cardapio/cadastrar.css"
-
 export default class novoItem extends React.Component {
   state = {
-    nome: "",
+    nome: 'Item',
     preco: "",
     descricao: "",
     image: null,
-    status: ""
+    status: "",
+
+    loaded: 0
   };
 
   async componentDidMount() {
@@ -54,74 +56,81 @@ export default class novoItem extends React.Component {
     event.preventDefault();
     let data = new FormData();
 
-    data.append('nome', this.state.nome)
-    data.append('descricao', this.state.descricao)
-    data.append('preco', this.state.preco)
-    data.append('image', this.state.image)
-    data.append('status', this.state.status)
+    data.append("nome", this.state.nome);
+    data.append("descricao", this.state.descricao);
+    data.append("preco", this.state.preco);
+    data.append("image", this.state.image);
+    data.append("status", this.state.status);
 
-    for (let key of data.entries()) {
-      console.log(key)
-    } 
-    
-    
-    await axios.post("http://localhost:8081/cardapio-img", data ).then(res => {
-      console.log(res.statusText)
-    
-    // if (res.data === "S") {
-      //   alert("Item Adicionado Ao Cardapio!");
-      //   this.props.history.push("/cardapio");
-      // } else {
-      //   alert("Ops... Não foi possível fazer o pedido, ocorreu algum erro!");
-      // }
-    });
+    await axios
+      .post("http://localhost:8081/cardapio-img")
+      .then(toast(<div>Item Adicionado Com Sucesso!</div>));
   };
 
   render() {
     return (
-      <body>
-        <InfoPizzaAdminDashboard/>
-        <div id="formCardapio">
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            Nome:
-            <input type="text" name="nome" onChange={this.handleChangeNome} />
-          </div>
-          <br />
-          <div>
-            Preco:
-            <input type="text" name="preco" onChange={this.handleChangePreco} />
-          </div>
-          <br />
-          <div>
-            Descricao:
-            <input
-              type="text"
-              name="descricao"
-              onChange={this.handleChangeDescricao}
-            />
-          </div>
-          <br />
-          <div>
-            Imagem:
-            <input
-              type="file"
-              name="image"
-              onChange={this.handleChangeImgURL}
-            />
-          </div>
-          <br />
-          <div>
-            Status
-            <select name="status" onChange={this.handleChangeStatus}>
-              <option value="Não Listado">Selecione</option>
-              <option value="Listado">Listado</option>
-              <option value="Não Listado">Não Listado</option>
-            </select>
-          </div>
+      <body id="cardapioAddBack">
+        <InfoPizzaAdminDashboard />
+        <div id="cardapioAddBody">
+          <ToastContainer />
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <p id="cardapioAddTitulo">Nome:</p>
+              <input
+                type="text"
+                name="nome"
+                id="cardapioAddInputs"
+                onChange={this.handleChangeNome}
+                required
+              />
+            </div>
+            <div>
+              <p id="cardapioAddTitulo">Preco:</p>
+              <input
+                type="text"
+                name="preco"
+                id="cardapioAddInputs"
+                onChange={this.handleChangePreco}
+                required
+              />
+            </div>
+            <div>
+              <p id="cardapioAddTitulo">Descrição:</p>
+              <input
+                type="text"
+                name="descricao"
+                id="cardapioAddInputs"
+                onChange={this.handleChangeDescricao}
+                required
+              />
+            </div>
+            <div>
+              <p id="cardapioAddTitulo">Imagem:</p>
+              <input
+                type="file"
+                name="image"
+                id="cardapioAddInputsImg"
+                onChange={this.handleChangeImgURL}
+                required
+              />
+            </div>
+            <div>
+              <p id="cardapioAddTitulo">Status:</p>
+              <select
+                name="status"
+                id="cardapioAddStatusSelect"
+                onChange={this.handleChangeStatus}
+              >
+                <option value="Não Listado">Selecione</option>
+                <option value="Listado">Listado</option>
+                <option value="Não Listado">Não Listado</option>
+              </select>
+            </div>
 
-          <button type="submit">Fazer Pedido</button>
-        </form>
+            <button id="cardapioSaveBtn" type="submit">
+              Fazer Pedido
+            </button>
+          </form>
         </div>
       </body>
     );

@@ -29,29 +29,31 @@ export default class feedPosts extends React.Component {
 
   render() {
     return (
-      <body class="container">
-        <InfoPizzaAdminDashboard />
-        <h2 class="basic-title text-center">Postagens</h2>
-        <div>
-          <table class="table table-bordered">
-            <div>
-              {this.state.posts.map(post => (
-                <div id="blocoItem">
-                  <Link
-                    to={`/feed/postagem/${post.id}`}
-                    params={{ id: post.id }}
-                  >
-                    {" "}
-                    {post.titulo}{" "}
-                  </Link>{" "}
-                  <br />
-                  <p id="itemPreco">{post.descricao}</p>
-                </div>
-              ))}
-            </div>
-          </table>
+      <div id="feedListarBack">
+        <InfoPizzaAdminDashboard props={"/"}/>
+        <div id="feedListarBody">
+          <div id="feedPostagensFeitas">
+            {this.state.posts.map(post => (
+              <div id="feedListarBloco">
+                <Link
+                  to={`/feed/postagem/${post.id}`}
+                  params={{ id: post.id }}
+                  id="feedListarTitulo"
+                >
+                  {post.titulo}
+                </Link>
+                <p id="feedListarData">
+                  {post.updatedAt
+                    .replace("T", "  == ")
+                    .replace(/-/g, "/")
+                    .replace(".000Z", "")}
+                </p>
+                <p id="feedListarDescricao">{post.descricao}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </body>
+      </div>
     );
   }
 }

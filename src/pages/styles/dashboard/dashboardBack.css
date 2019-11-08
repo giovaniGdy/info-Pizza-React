@@ -1,0 +1,43 @@
+@-webkit-keyframes colorchange {
+  0% {
+    background-color: #ff7e7e;
+  }
+
+  30% {
+    background-color: #ff953d;
+  }
+
+  60% {
+    background-color: #ffad7e;
+  }
+
+  90% {
+    background-color: #fff674;
+  }
+
+  100% {
+    background-color: #ff4343;
+  }
+}
+
+#dashUnderBack {
+  position: absolute;
+  width: 100%;
+}
+
+#dashUnderBody {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+#dashUnderImg {
+  width: 60%;
+  margin: 0;
+}
+
+#dashUnderEscrita {
+  font-size: 25px;
+  margin: 20px;
+  font-weight: bolder;
+}

@@ -34,20 +34,26 @@ export default class infoCardapio extends React.Component {
         imgUrl: res.data.item.imgUrl,
         status: res.data.item.status
       });
+      console.log(this.state.nome);
     });
   }
 
   handleItemDelete = event => {
-    axios
-      .delete(`http://localhost:8081/cardapio/${this.props.match.params.id}`)
-      .then(res => {
-        if (res.data === "S") {
-          alert("Pedido Deletado Com Sucesso!");
-          this.props.history.push("/cardapio");
-        } else {
-          alert("Ops... Não foi possível deletar, ocorreu algum erro!");
-        }
-      });
+    const r = window.confirm(
+      "Tem certeza que deseja deletar este item do cardapio? \n\nNão será possível recupera-lo!"
+    );
+    if (r === true) {
+      axios
+        .delete(`http://localhost:8081/cardapio/${this.props.match.params.id}`)
+        .then(res => {
+          if (res.data === "S") {
+            alert("Pedido Deletado Com Sucesso!");
+            this.props.history.push("/cardapio");
+          } else {
+            alert("Ops... Não foi possível deletar, ocorreu algum erro!");
+          }
+        });
+    }
   };
 
   handleChangeNome = event => {
@@ -65,11 +71,6 @@ export default class infoCardapio extends React.Component {
       descricao: event.target.value
     });
   };
-  handleChangeImgURL = event => {
-    this.setState({
-      imgUrl: event.target.value
-    });
-  };
   handleChangeStatus = event => {
     this.setState({
       status: event.target.value
@@ -77,8 +78,8 @@ export default class infoCardapio extends React.Component {
   };
 
   handleSubmit = event => {
-    const id = this.state.id;
     event.preventDefault();
+    const id = this.state.id;
 
     const item = {
       id: this.state.id,
@@ -101,64 +102,80 @@ export default class infoCardapio extends React.Component {
 
   render() {
     const item = this.state;
+    const imagesUrl = `http://localhost:8081/img/`;
     return (
-      <div>
+      <div id="cardapioInfoBack">
         <InfoPizzaAdminDashboard />
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            Nome:
-            <input
-              type="text"
-              name="nome"
-              placeholder={item.nome}
-              onChange={this.handleChangeNome}
-            />
-          </div>
-          <br />
-          <div>
-            Preco:
-            <input
-              type="text"
-              name="preco"
-              placeholder={item.preco}
-              onChange={this.handleChangePreco}
-            />
-          </div>
-          <br />
-          <div>
-            Descricao:
-            <input
-              type="text"
-              name="descricao"
-              placeholder={item.descricao}
-              onChange={this.handleChangeDescricao}
-            />
-          </div>
-          <br />
-          <div>
-            Imagem:
-            <input
-              type="file"
-              name="imgUrl"
-              placeholder={item.imgUrl}
-              onChange={this.handleChangeImgURL}
-            />
-          </div>
-          <br />
-          <div>
-            Status
-            <select name="status" onChange={this.handleChangeStatus}>
-              <option value={item.status}>Selecione</option>
-              <option value="Listado">Listado</option>
-              <option value="Não Listado">Não Listado</option>
-            </select>
-          </div>
+        <div id="cardapioInfoBody">
+          <form onSubmit={this.handleSubmit} id="cardapioInfoForm">
+            <div>
+              <p id="cardapioInfoTitulo">Nome: </p>
+              <input
+                type="text"
+                name="nome"
+                value={item.nome}
+                id="cardapioInfoInputs"
+                onChange={this.handleChangeNome}
+                required
+              />
+            </div>
+            <div>
+              <p id="cardapioInfoTitulo">Preco: </p>
+              <input
+                type="text"
+                name="preco"
+                value={item.preco}
+                id="cardapioInfoInputs"
+                onChange={this.handleChangePreco}
+                required
+              />
+            </div>
+            <div>
+              <p id="cardapioInfoTitulo">Descrição: </p>
+              <input
+                type="text"
+                name="descricao"
+                value={item.descricao}
+                id="cardapioInfoInputs"
+                onChange={this.handleChangeDescricao}
+                required
+              />
+            </div>
+            <div>
+              <p id="cardapioInfoTitulo">Imagem:</p>
+              <img
+                src={`${imagesUrl}${item.imgUrl}`}
+                id="cardapioInfoImg"
+                alt="item do Cardapio"
+              />
+            </div>
+            <div>
+              <p id="cardapioInfoTitulo">Status: </p>
+              <select
+                name="status"
+                id="cardapioInfoStatusSelect"
+                onChange={this.handleChangeStatus}
+              >
+                <option value={item.status} disabled selected>
+                  Selecione
+                </option>
+                <option value="Listado">Listado</option>
+                <option value="Não Listado">Não Listado</option>
+              </select>
+            </div>
 
-          <button type="submit">Salvar</button>
-        </form>
-        <button type="submit" onClick={this.handleItemDelete}>
-          Deletar Pedido
-        </button>
+            <button id="cardapioInfoSave" type="submit">
+              ✔ Salvar ✔
+            </button>
+          </form>
+          <button
+            id="cardapioInfoDelete"
+            type="submit"
+            onClick={this.handleItemDelete}
+          >
+            ✖ Deletar ✖
+          </button>
+        </div>
       </div>
     );
   }
