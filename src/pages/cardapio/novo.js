@@ -63,7 +63,7 @@ export default class novoItem extends React.Component {
     data.append("status", this.state.status);
 
     await axios
-      .post("http://localhost:8081/cardapio-img")
+      .post("http://localhost:8081/cardapio-img", data)
       .then(toast(<div>Item Adicionado Com Sucesso!</div>));
   };
 
@@ -128,7 +128,7 @@ export default class novoItem extends React.Component {
             </div>
 
             <button id="cardapioSaveBtn" type="submit">
-              Fazer Pedido
+              Adicionar Item
             </button>
           </form>
         </div>
