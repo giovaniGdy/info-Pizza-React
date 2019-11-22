@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 export default class Unico extends React.Component {
   state = {
@@ -23,12 +24,26 @@ export default class Unico extends React.Component {
     const id = this.state.id;
 
     axios.put("http://localhost:8081/dadosPedido", { id }).then(res => {
-      this.setState({
-        pedido: res.data.pedido.pedido,
-        preco: res.data.pedido.preco,
-        status: res.data.pedido.status,
-        alteracao: res.data.pedido.updatedAt
-      });
+      if (res.data.pedido == null) {
+        toast(
+          <div>
+            Opss, nenhuma informação foi encontrada com esse número...
+             
+          </div>,
+          {
+            className: "popUpError",
+            position: "top-center",
+            autoClose: false
+          }
+        );
+      } else {
+        this.setState({
+          pedido: res.data.pedido.pedido,
+          preco: "R$ " + res.data.pedido.preco,
+          status: res.data.pedido.status,
+          alteracao: res.data.pedido.updatedAt
+        });
+      }
     });
   };
 
@@ -40,6 +55,7 @@ export default class Unico extends React.Component {
             ↩ Voltar
           </Link>
           <div id="insertCodigo">
+            <ToastContainer />
             <div>
               <h1 id="statusTituloCodigo">Código do Pedido:</h1>
               <input

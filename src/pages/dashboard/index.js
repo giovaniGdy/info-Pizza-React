@@ -1,10 +1,22 @@
 import React from "react";
+import history from "../../components/Historico/history";
+
+import Auth from "../../components/Auth/auth";
 
 export default class infoPizzaAdminDashboard extends React.Component {
   LogoutBtn() {
     const r = window.confirm("Deseja Finalizar a Sessão?");
     if (r === true) {
       localStorage.clear();
+      history.push("/");
+    }
+  }
+
+  async componentDidMount() {
+    const r = await Auth();
+    if (r === true) {
+    } else {
+      history.push("/");
     }
   }
 

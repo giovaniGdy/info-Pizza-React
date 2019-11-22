@@ -18,7 +18,7 @@ export default class Site extends React.Component {
 
   render() {
     const unifeobLogo = "http://localhost:8081/img/logoUnifeob.png";
-    const pizzariaLogo = "http://localhost:8081/img/logoPizza.jpg";
+    const pizzaLogo = "http://localhost:8081/img/logoPizza.jpg";
     return (
       <body id="siteBack">
         <div id="siteBody">
@@ -34,7 +34,7 @@ export default class Site extends React.Component {
             </Link>
           </div>
           <div>
-            <img src={pizzariaLogo} alt="pizzaLogo" id="pizzaLogoIndex" />
+            <img src={pizzaLogo} alt="pizzaLogo" id="pizzaLogoIndex" />
             <h1>ULTIMAS NOTÍCIAS</h1>
             {this.state.feed.map(post => (
               <div id="siteFeedBlock">

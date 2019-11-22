@@ -9,7 +9,7 @@ import InfoPizzaAdminDashboard from "../dashboard";
 
 export default class novoItem extends React.Component {
   state = {
-    nome: 'Item',
+    nome: "Item",
     preco: "",
     descricao: "",
     image: null,
@@ -62,9 +62,28 @@ export default class novoItem extends React.Component {
     data.append("image", this.state.image);
     data.append("status", this.state.status);
 
-    await axios
-      .post("http://localhost:8081/cardapio-img", data)
-      .then(toast(<div>Item Adicionado Com Sucesso!</div>));
+    await axios.post("http://localhost:8081/cardapio", data).then(res => {
+      if (res.data === "S") {
+        toast(<div>Item Adicionado Com Sucesso!</div>, {
+          className: "popUp",
+          position: "top-center",
+          autoClose: false
+        });
+      } else {
+        toast(
+          <div>
+            Opss! Ocoreu algum erro... <br />
+            Por favor, recarregue a página! <br />
+            <br />
+          </div>,
+          {
+            className: "popUpError",
+            position: "top-center",
+            autoClose: false
+          }
+        );
+      }
+    });
   };
 
   render() {

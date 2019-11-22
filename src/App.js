@@ -1,5 +1,5 @@
-import React from 'react';
-import Routes from './routes'
+import React from "react";
+import Routes from "./routes";
 
 import "./pages/styles/site/siteStyles.css";
 
@@ -22,11 +22,10 @@ import "./pages/styles/pedidos/listagem.css";
 import "./pages/styles/pedidos/novo.css";
 import "./pages/styles/pedidos/status.css";
 
-
 function App() {
   return (
     <>
-    <Routes />
+      <Routes />
     </>
   );
 }
