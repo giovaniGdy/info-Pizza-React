@@ -303,7 +303,7 @@ export default class novoPedido extends React.Component {
                   maxLength="11"
                   required
                 />
-                <span>{this.state.CPFMessage}</span>
+                <span id='cpfMessage'>{this.state.CPFMessage}</span>
               </div>
             </div>
             <div id="cardapio">

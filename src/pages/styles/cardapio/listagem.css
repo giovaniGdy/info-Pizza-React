@@ -2,6 +2,7 @@
   position: absolute;
   background-color: rgb(255, 162, 74);
   width: 100%;
+  height: 100%
 }
 
 #cardapioListaBody {
@@ -47,4 +48,8 @@
     margin: 0;
     font-size: 20px;
     font-weight: bold;    
+}
+
+#cpfMessage {
+  padding-left: 20px;
 }
